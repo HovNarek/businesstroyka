@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SpecializationController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminForgotPasswordController;
 use App\Http\Controllers\Auth\AdminLoginController;
@@ -39,4 +41,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/password/reset', [AdminForgotPasswordController::class, 'showLinkRequestForm'])->name('admin.password.request');
     Route::post('/password/reset', [AdminResetPasswordController::class, 'reset'])->name('admin.password.update');
     Route::get('/password/reset/{token}', [AdminResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
+
+    Route::resource('/specializations', SpecializationController::class);
+
+    Route::resource('/categories', CategoryController::class);
+
+
 });

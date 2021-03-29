@@ -1,0 +1,7 @@
+.spec_enabled_div {
+    display: inline-block;
+    position: absolute;
+}
+.spec_edit {
+    margin-left: 2rem;
+}
