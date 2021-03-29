@@ -97,9 +97,7 @@ class RegionSeeder extends Seeder
             array('id' => '82','title' => 'Чукотский АО','enabled' => '1','main' => '0'),
             array('id' => '83','title' => 'Ямало-Ненецкий АО','enabled' => '1','main' => '0'),
             array('id' => '84','title' => 'Ярославская область','enabled' => '1','main' => '0'),
-            array('id' => '5049','title' => 'Московская область','enabled' => '1','main' => '1'),
             array('id' => '5050','title' => 'Санкт-Петербург','enabled' => '1','main' => '0'),
-            array('id' => '5053','title' => 'Санкт-Петербург','enabled' => '0','main' => '0'),
             array('id' => '5287','title' => 'Минск','enabled' => '1','main' => '0'),
         );
 

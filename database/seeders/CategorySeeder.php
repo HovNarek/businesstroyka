@@ -46,7 +46,7 @@ class CategorySeeder extends Seeder
             $data [] = [
                 'id' => $category['id'],
                 'cat_title' => $category['title'],
-                'cat_keyword' => $category['keyword'],
+                'cat_slug' => $category['keyword'],
                 'cat_enabled' => $category['enabled'],
                 'cat_mtitle' => $category['mtitle'],
                 'cat_mkeywords' => $category['mkeywords'],

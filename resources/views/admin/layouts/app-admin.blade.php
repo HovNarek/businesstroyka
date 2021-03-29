@@ -279,5 +279,7 @@
         }
     });
 </script>
+
+@yield('foot-js')
 </body>
 </html>

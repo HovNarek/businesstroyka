@@ -47,7 +47,8 @@
         <td>{{ $spec->spec_title }}</td>
         <td>
             <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success spec_enabled_div">
-                <input type="checkbox" class="custom-control-input" id="spec_enabled_{{$spec->id}}" name="spec_enabled">
+                <input type="checkbox" class="custom-control-input spec_enabled" id="spec_enabled_{{$spec->id}}"
+                       name="spec_enabled" data-id="{{ $spec->id }}" @if($spec->spec_enabled)checked @endif>
                 <label class="custom-control-label" for="spec_enabled_{{$spec->id}}" title="Вкл/Выкл"></label>
             </div>
             <a href="{{ route('specializations.edit', $spec->id) }}" class="btn btn-info btn-sm float-left mr-1 spec_edit">
@@ -70,7 +71,7 @@
                                     </table>
                                 </div>
                             @else
-                                <p>ТСпециализации еще нет ....</p>
+                                <p>Специализации еще нет ....</p>
                             @endif
                         </div>
                         <!-- /.card-body -->
@@ -83,4 +84,25 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
+@endsection
+
+@section('foot-js')
+    <script>
+        $('.spec_enabled').change(function (e) {
+            let id = $(this).data('id');
+            $.ajax({
+                url: "{{ Route('specialization.ajaxChangeSpecStatus') }}",
+                type: "POST",
+                data: {
+                    id: id
+                },
+                headers: {
+                    'X-CSRF-TOKEN': "{{csrf_token()}}"
+                },
+                success: function (data) {
+
+                },
+            });
+        });
+    </script>
 @endsection

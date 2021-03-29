@@ -89,9 +89,6 @@ class SpecializationSeeder extends Seeder
             ['id' => '87','title' => 'Садовник','keyword' => 'sadovnik','enabled' => '1','mtitle' => 'Садовник','mkeywords' => 'Садовник','mdescription' => 'Садовник'],
             ['id' => '88','title' => 'Кровельные работы','keyword' => 'krovelnyje-raboty','enabled' => '1','mtitle' => '','mkeywords' => '','mdescription' => ''],
             ['id' => '89','title' => 'Фундаментные работы','keyword' => 'fundamentnyje-raboty','enabled' => '1','mtitle' => 'Фундаментные работы','mkeywords' => 'Фундаментные работы','mdescription' => 'Фундаментные работы'],
-            ['id' => '90','title' => 'Фундаментные работы','keyword' => 'fundamentnyje-raboty','enabled' => '1','mtitle' => 'Фундаментные работы','mkeywords' => 'Фундаментные работы','mdescription' => 'Фундаментные работы'],
-            ['id' => '91','title' => 'Фундаментные работы','keyword' => 'fundamentnyje-raboty','enabled' => '1','mtitle' => 'Фундаментные работы','mkeywords' => 'Фундаментные работы','mdescription' => 'Фундаментные работы'],
-            ['id' => '92','title' => 'Кровельные работы','keyword' => 'krovelnyje-raboty','enabled' => '1','mtitle' => 'ремонт кровли','mkeywords' => 'мягкая кровля','mdescription' => 'стоимость работ по замене кровли'],
             ['id' => '93','title' => 'аренда экскаватор JCB','keyword' => 'arenda-ekskavator-jcb','enabled' => '1','mtitle' => 'аренда экскаватора','mkeywords' => 'сколько стоит экскаватор аренда','mdescription' => 'заказать экскаватор jcb'],
             ['id' => '94','title' => 'Экскаватор JCB','keyword' => 'ekskavator-jcb','enabled' => '1','mtitle' => 'аренда экскаватора','mkeywords' => 'аренда экскаватора','mdescription' => 'аренда экскаватора'],
             ['id' => '95','title' => 'Услуги ямобур вездеход','keyword' => 'uslugi-jamobur-vezdehod','enabled' => '1','mtitle' => 'услуги ямобур, аренда ямобур','mkeywords' => 'аренда ямобур','mdescription' => 'установка опор ЛЭП'],
@@ -104,7 +101,7 @@ class SpecializationSeeder extends Seeder
             $data [] = [
                 'id' => $specialization['id'],
                 'spec_title' => $specialization['title'],
-                'spec_keyword' => $specialization['keyword'],
+                'spec_slug' => $specialization['keyword'],
                 'spec_enabled' => $specialization['enabled'],
                 'spec_mtitle' => $specialization['mtitle'],
                 'spec_mkeywords' => $specialization['mkeywords'],

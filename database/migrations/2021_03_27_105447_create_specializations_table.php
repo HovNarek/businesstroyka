@@ -15,8 +15,8 @@ class CreateSpecializationsTable extends Migration
     {
         Schema::create('specializations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('spec_title');
-            $table->string('spec_keyword');
+            $table->string('spec_title')->unique();
+            $table->string('spec_slug')->unique();
             $table->tinyInteger('spec_enabled')->default(0);
             $table->string('spec_mtitle')->nullable();
             $table->string('spec_mkeywords')->nullable();
