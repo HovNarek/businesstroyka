@@ -107,7 +107,7 @@ class SpecializationController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'spec_title' => 'required|unique:specializations|min:3|max:50',
+            'spec_title' => 'required|min:3|max:50',
         ]);
 
         $specs = Specialization::where('spec_title', $request->spec_title)

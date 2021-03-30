@@ -35,13 +35,13 @@
                             @method('PUT')
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="spec_title">Название:</label>
+                                    <label for="spec_title">Название</label>
                                     <input type="text" name="spec_title"
                                         class="form-control @error('spec_title') is-invalid @enderror" id="spec_title"
                                            value="{{ old('spec_title', $spec->spec_title) }}"">
                                 </div>
                                 <div class="form-group">
-                                    <label for="spec_mtitle">Meta Title:</label>
+                                    <label for="spec_mtitle">Meta Title</label>
                                     <input type="text" name="spec_mtitle"
                                         class="form-control @error('spec_mtitle') is-invalid @enderror" id="spec_mtitle"
                                            value="{{ old('spec_mtitle', $spec->spec_mtitle) }}">

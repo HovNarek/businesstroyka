@@ -26,7 +26,8 @@ class Category extends Model
     ];
 
     public function specializations() {
-        return $this->belongsToMany(Specialization::class, 'category_specialization', 'cat_id', 'spec_id');
+        return $this->belongsToMany(Specialization::class, 'category_specialization', 'cat_id', 'spec_id')
+            ->withTimestamps();
     }
 
     public function sluggable(): array
@@ -37,4 +38,15 @@ class Category extends Model
             ]
         ];
     }
+
+    public static function getAllCats() {
+        $cats = Category::with('specializations')->get();
+        return $cats;
+    }
+
+    public static function getCatById($id) {
+        $cat = Category::find($id);
+        return $cat;
+    }
+
 }

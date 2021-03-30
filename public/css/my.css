@@ -1,6 +1,13 @@
+.cat_enabled_div {
+    display: inline-block !important;
+    position: absolute !important;
+}
+.cat_edit {
+    margin-left: 2rem;
+}
 .spec_enabled_div {
-    display: inline-block;
-    position: absolute;
+    display: inline-block !important;
+    position: absolute !important;
 }
 .spec_edit {
     margin-left: 2rem;

@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->string('cat_mkeywords')->nullable();
             $table->string('cat_mdescription')->nullable();
             $table->tinyInteger('cat_pay')->default(0);
-            $table->integer('cat_price')->nullable();
+            $table->integer('cat_price')->default(0);
             $table->timestamps();
         });
     }

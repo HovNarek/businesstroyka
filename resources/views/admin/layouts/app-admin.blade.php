@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/my.css') }}">
+
+    @yield('head-css')
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -206,7 +209,28 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <p>
+                                Категории
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('categories.index') }}" class="nav-link">
+                                    <p>Список категории</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('categories.create') }}" class="nav-link">
+                                    <p>Добавить категорию</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <p>
                                 Специализации

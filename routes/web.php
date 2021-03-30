@@ -43,9 +43,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/password/reset/{token}', [AdminResetPasswordController::class, 'showResetForm'])->name('admin.password.reset');
 
     Route::resource('/specializations', SpecializationController::class);
-    Route::post('/change-specialization-status', [SpecializationController::class, 'ajaxChangeSpecStatus'])->name('specialization.ajaxChangeSpecStatus');
+    Route::post('/change-specialization-status', [SpecializationController::class, 'ajaxChangeSpecStatus'])->name('specializations.ajaxChangeSpecStatus');
 
     Route::resource('/categories', CategoryController::class);
+    Route::post('/change-category-status', [CategoryController::class, 'ajaxChangeCatStatus'])->name('categories.ajaxChangeCatStatus');
 
 
 });

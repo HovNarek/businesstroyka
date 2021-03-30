@@ -6,11 +6,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Специализации</h1>
+                    <h1 class="m-0">Категории</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Список специализации</li>
+                        <li class="breadcrumb-item active">Список категории</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,12 +25,12 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Список специализации</h3>
+                            <h3 class="card-title">Список категории</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <a href="{{ route('specializations.create') }}" class="btn btn-primary mb-3">Добавить специализацию</a>
-                            @if (count($specs))
+                            <a href="{{ route('categories.create') }}" class="btn btn-primary mb-3">Добавить категорию</a>
+                            @if (count($cats))
                                 <div class="table-responsive" >
                                     <table class="table table-bordered table-hover text-wrap">
                                         <thead>
@@ -41,21 +41,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-@foreach($specs as $key => $spec)
+@foreach($cats as $key => $cat)
     <tr>
         <td>{{$key + 1}}</td>
-        <td>{{ $spec->spec_title }}</td>
+        <td>{{ $cat->cat_title }}</td>
         <td>
-            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success spec_enabled_div">
-                <input type="checkbox" class="custom-control-input spec_enabled" id="spec_enabled_{{$spec->id}}"
-                       name="spec_enabled" data-id="{{ $spec->id }}" @if($spec->spec_enabled)checked @endif>
-                <label class="custom-control-label" for="spec_enabled_{{$spec->id}}" title="Вкл/Выкл"></label>
+            <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success cat_enabled_div">
+                <input type="checkbox" class="custom-control-input cat_enabled" id="cat_enabled_{{$cat->id}}"
+                       name="cat_enabled" data-id="{{ $cat->id }}" @if($cat->cat_enabled)checked @endif>
+                <label class="custom-control-label" for="cat_enabled_{{$cat->id}}" title="Вкл/Выкл"></label>
             </div>
-            <a href="{{ route('specializations.edit', $spec->id) }}" class="btn btn-info btn-sm float-left mr-1 spec_edit">
+            <a href="{{ route('categories.edit', $cat->id) }}" class="btn btn-info btn-sm float-left mr-1 cat_edit">
                 <i class="fas fa-pencil-alt"></i>
             </a>
             <form
-                action="{{ route('specializations.destroy', $spec->id)}}"
+                action="{{ route('categories.destroy', $cat->id)}}"
                 method="post" class="float-left">
                 @csrf
                 @method('DELETE')
@@ -71,7 +71,7 @@
                                     </table>
                                 </div>
                             @else
-                                <p>Специализации еще нет ....</p>
+                                <p>Категории еще нет ....</p>
                             @endif
                         </div>
                         <!-- /.card-body -->
@@ -88,10 +88,10 @@
 
 @section('foot-js')
     <script>
-        $('.spec_enabled').change(function (e) {
+        $('.cat_enabled').change(function (e) {
             let id = $(this).data('id');
             $.ajax({
-                url: "{{ Route('specializations.ajaxChangeSpecStatus') }}",
+                url: "{{ Route('categories.ajaxChangeCatStatus') }}",
                 type: "POST",
                 data: {
                     id: id
