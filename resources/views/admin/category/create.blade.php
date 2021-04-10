@@ -1,11 +1,5 @@
 @extends('admin.layouts.app-admin')
 
-@section('head-css')
-    <!-- Select2 -->
-    <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-@endsection
-
 @section('content-wrapper')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -95,7 +89,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cat_price">Цена</label>
-                                    <input type="number" name="cat_price"
+                                    <input type="text" name="cat_price"
                                            class="form-control @error('cat_price') is-invalid @enderror" id="cat_price"
                                            value="{{ old('cat_price') }}">
                                 </div>
@@ -119,21 +113,4 @@
     <!-- /.content -->
 @endsection
 
-@section('foot-js')
-    <!-- Select2 -->
-    <script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
-
-    <!-- Page specific script -->
-    <script>
-        $(function () {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-            //Initialize Select2 Elements
-            $('.select2bs4').select2({
-                theme: 'bootstrap4'
-            });
-        })
-    </script>
-@endsection
 

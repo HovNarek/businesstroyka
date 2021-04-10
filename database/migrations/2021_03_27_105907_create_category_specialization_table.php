@@ -15,17 +15,17 @@ class CreateCategorySpecializationTable extends Migration
     {
         Schema::create('category_specialization', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cat_id')->unsigned();
-            $table->integer('spec_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            $table->integer('specialization_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('cat_id')
+            $table->foreign('category_id')
                 ->references('id')
                 ->on('categories')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('spec_id')
+            $table->foreign('specialization_id')
                 ->references('id')
                 ->on('specializations')
                 ->onUpdate('cascade')

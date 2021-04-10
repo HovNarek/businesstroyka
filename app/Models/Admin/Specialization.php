@@ -24,7 +24,7 @@ class Specialization extends Model
     ];
 
     public function categories() {
-        return $this->belongsToMany(Category::class, 'category_specialization', 'spec_id', 'cat_id');
+        return $this->belongsToMany(Category::class);
     }
 
     public function sluggable(): array
@@ -46,6 +46,14 @@ class Specialization extends Model
         return $spec;
     }
 
+    public static function getSpecsByCategoryId($cat_id) {
+        $specs = Specialization::with('categories')->whereHas('categories', function($query) use ($cat_id) {
+            $query->where('categories.id', $cat_id);
+        })->get();
+
+        return $specs;
+    }
+//
 //    public static function getSpecsByCategoryId($cat_id) {
 //        $cat = Category::find($cat_id);
 //        if ($cat === null) return null;

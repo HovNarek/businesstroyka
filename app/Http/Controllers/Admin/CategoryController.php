@@ -47,6 +47,7 @@ class CategoryController extends Controller
 //        dd($request->all());
         $validator = Validator::make($request->all(), [
             'cat_title' => 'required|unique:categories|min:3|max:50',
+            'cat_price' => 'nullable|regex:/^\d*(\.\d*)?$/',
         ]);
 
         if ($validator->fails()) {
@@ -72,13 +73,12 @@ class CategoryController extends Controller
             'cat_mkeywords' => $request->cat_mkeywords ?? $request->cat_title,
             'cat_mdescription' => $request->cat_mdescription ?? $request->cat_title,
             'cat_pay' => $pay,
-            'cat_price' => $request->cat_price ?? 0,
+            'cat_price' => $request->cat_price ? number_format($request->cat_price, 2) : 0,
         ]);
 
         $cat->specializations()->sync($request->specs);
 
         return redirect()->route('categories.index')->with('success', 'Категория создана');
-
     }
 
     /**
@@ -120,7 +120,14 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'cat_title' => 'required|min:3|max:50',
+            'cat_price' => 'nullable|regex:/^\d*(\.\d*)?$/',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $cats = Category::where('cat_title', $request->cat_title)
             ->where('id', '<>', $id)
@@ -128,12 +135,6 @@ class CategoryController extends Controller
         if (count($cats)) {
             return redirect()->back()
                 ->with('error', 'Категория с этим именем уже существует')
-                ->withInput();
-        }
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
                 ->withInput();
         }
 
@@ -156,7 +157,7 @@ class CategoryController extends Controller
             'cat_mkeywords' => $request->cat_mkeywords ?? $request->cat_title,
             'cat_mdescription' => $request->cat_mdescription ?? $request->cat_title,
             'cat_pay' => $pay,
-            'cat_price' => $request->cat_price ?? 0
+            'cat_price' => $request->cat_price ? number_format($request->cat_price, 2) : 0
         ]);
 
         $cat = Category::getCatById($id);
@@ -173,6 +174,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+//        $cat = Category::getCatById($id);
+//        $cat->specializations()->sync([]);
         Category::destroy($id);
 
         return redirect()->route('categories.index')->with('success', "Категория удалена");

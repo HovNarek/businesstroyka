@@ -26,7 +26,7 @@ class Category extends Model
     ];
 
     public function specializations() {
-        return $this->belongsToMany(Specialization::class, 'category_specialization', 'cat_id', 'spec_id')
+        return $this->belongsToMany(Specialization::class)
             ->withTimestamps();
     }
 

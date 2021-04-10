@@ -30,7 +30,24 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <a href="{{ route('specializations.create') }}" class="btn btn-primary mb-3">Добавить специализацию</a>
-                            @if (count($specs))
+
+                            <form action="" method="GET">
+                                <div class="form-group">
+                                    <label>Выбрать категорию</label>
+                                    <select class="form-control select2 cat_select" name="cat" style="width: 30%;">
+                                        <option value="0" @if(0 == $current_cat_id) selected @endif>
+                                            все категории
+                                        </option>
+                                        @foreach($cats as $key => $cat)
+                                            <option value="{{ $cat->id }}" @if($cat->id == $current_cat_id) selected @endif>
+                                                    {{ $cat->cat_title }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </form>
+
+                        @if (count($specs))
                                 <div class="table-responsive" >
                                     <table class="table table-bordered table-hover text-wrap">
                                         <thead>
@@ -87,6 +104,12 @@
 @endsection
 
 @section('foot-js')
+    <script>
+        $('.cat_select').change(function () {
+            this.form.submit();
+        })
+    </script>
+
     <script>
         $('.spec_enabled').change(function (e) {
             let id = $(this).data('id');

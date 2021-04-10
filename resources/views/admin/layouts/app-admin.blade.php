@@ -14,6 +14,8 @@
 
     @yield('head-css')
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head>
@@ -292,6 +294,23 @@
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('adminlte/plugins/sparklines/sparkline.js') }}"></script>
+
+<!-- Page specific script -->
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+    })
+</script>
 
 <script>
     $('.nav-sidebar a').each(function(){

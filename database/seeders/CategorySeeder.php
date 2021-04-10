@@ -52,7 +52,7 @@ class CategorySeeder extends Seeder
                 'cat_mkeywords' => $category['mkeywords'],
                 'cat_mdescription' => $category['mdescription'],
                 'cat_pay' => $category['pay'],
-                'cat_price' => $category['price'],
+                'cat_price' => number_format($category['price'], 2),
                 'created_at' => Carbon::now()->format('Y-m-d h-i-s'),
                 'updated_at' => Carbon::now()->format('Y-m-d h-i-s')
             ];

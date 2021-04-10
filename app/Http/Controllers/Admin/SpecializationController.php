@@ -20,11 +20,37 @@ class SpecializationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $specs = Specialization::getAllSpecs();
+        $validator = Validator::make($request->all(), [
+            'cat' => ' integer|min:0'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back();
+        }
+
+        if (isset($request->cat)) {
+            $cat_id = $request->cat;
+        } else {
+            $cat_id = 0;
+        }
+        if ($cat_id == 0) {
+            $specs = Specialization::getAllSpecs();
+        } else {
+            $specs = Specialization::getSpecsByCategoryId($cat_id);
+        }
+
         $cats = Category::with('specializations')->get();
-        return view('admin.specialization.index', compact('specs', 'cats'));
+
+        $current_cat = Category::getCatById($cat_id);
+        if ($current_cat === null) {
+            $current_cat_id = 0;
+        } else {
+            $current_cat_id = $cat_id;
+        }
+
+        return view('admin.specialization.index', compact('specs', 'cats', 'current_cat_id'));
     }
 
     /**
