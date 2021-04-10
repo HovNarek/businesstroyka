@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Admin\Role;
 use App\Notifications\AdminResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -47,5 +48,9 @@ class Admin extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AdminResetPasswordNotification($token));
+    }
+
+    public function roles() {
+        return $this->belongsToMany(Role::class);
     }
 }
