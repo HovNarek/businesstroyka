@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Admin\Region;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,5 +26,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        view()->composer(['auth.register'], function($view) {
+
+            $regions = Region::getAllRegions();
+//dd($regions);
+            $view->with('regions', $regions);
+        });
     }
 }

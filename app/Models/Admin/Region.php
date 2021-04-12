@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Region extends Model
 {
     use HasFactory;
+
+    public function cities() {
+        return $this->hasMany(City::class);
+    }
+
+    public static function getAllRegions() {
+        $regions_collection = Region::orderBy('id')->pluck('region_name', 'id');
+        $regions = $regions_collection->toArray();
+        return $regions;
+    }
 }

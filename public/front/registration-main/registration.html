@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="css/style.min.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <a class="header__logo">
+            <img src="icons/logo.png" alt="logo" />
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Authorization -->
+    <section class="registration">
+      <div class="container">
+        <h1 class="registration__title">
+          Регистрация <span>(все поля обязательны для заполнения)</span>
+        </h1>
+        <div class="registration-box">
+          <form class="registration-form">
+            <div class="user__type">
+              <label for="" class="type-label">Тип пользователя:</label>
+              <div class="radio-box">
+                <label
+                  ><input
+                    type="radio"
+                    name="type"
+                    class="type-input"
+                    required
+                  />Заказчик</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="type"
+                    class="type-input"
+                    required
+                  />Исполнитель</label
+                >
+              </div>
+            </div>
+            <div class="email">
+              <label class="email-label">Электронная почта:</label>
+              <input type="email" class="email-input" required />
+            </div>
+            <div class="password">
+              <label class="password-label">Пароль:</label>
+              <input type="password" class="password-input" required />
+              <button class="btn-password">
+                <img src="icons/eye.svg" alt="" />
+              </button>
+            </div>
+            <div class="phone">
+              <label class="phone-label">Телефон:</label>
+              <input
+                name="phone"
+                placeholder="+7(___) ___-____"
+                required
+                class="phone-input"
+              />
+            </div>
+            <div class="gender">
+              <label for="" class="gender-label">Пол:</label>
+              <div class="radio-box">
+                <label
+                  ><input
+                    type="radio"
+                    name="gender"
+                    class="gender-input"
+                    required
+                  />Мужчина
+                </label>
+                <label
+                  ><input
+                    type="radio"
+                    name="gender"
+                    class="gender-input"
+                    required
+                  />
+                  Женщина</label
+                >
+              </div>
+            </div>
+            <div class="name">
+              <label class="name-label">Имя:</label>
+              <input type="text" class="name-input" required />
+            </div>
+            <div class="city">
+              <label class="city-label">Ваш город:</label>
+              <div class="select-box">
+                <a href="#" class="region-select">Московская область </a>
+                <input type="hidden" name="region" required />
+                <div class="region-block">
+                  <div class="region__wrapper">
+                    <ul class="left__region">
+                      <li>
+                        <a class="region__item" href="" data-id="1">
+                          По Всей России</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="2">
+                          Ленинградская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="3"
+                          >Свердловская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="4">
+                          Санкт-Петербург</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="5">
+                          Московская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="6"> Адыгея</a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="7">
+                          Алтайский край</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="8">
+                          Амурская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="9">
+                          Архангельская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="10"
+                          >Астраханская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="11">
+                          Белгородская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="12"
+                          >Брянская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="13">Бурятия</a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="14"
+                          >Владимирская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="15">
+                          Волгоградская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="16"
+                          >Воронежская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="17">
+                          Дагестан</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="18"
+                          >Еврейская АО</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="19"
+                          >Забайкальский край</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="20"
+                          >Мурманская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="21"
+                          >Забайкальский край</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="22"
+                          >Ивановская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="23"
+                          >Ингушетия</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="24"
+                          >Иркутская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="25"
+                          >Кабардино-Балкария</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="26"
+                          >Калининградская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="27"
+                          >Кабардино-Балкария</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="28"
+                          >Калининградская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="29"
+                          >Калмыкия</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="30"
+                          >Калужская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="31"
+                          >Камчатский край</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="32"
+                          >Карачаево-Черкесия</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="33">Карелия</a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="34"
+                          >Кемеровская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="35"
+                          >Кировская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="36">Коми</a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="37"
+                          >Костромская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="38"
+                          >Краснодарский край</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="39"
+                          >Курганская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="40"
+                          >Курская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="41"
+                          >Липецкая область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="42"
+                          >Магаданская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="43"
+                          >Марий Эл
+                        </a>
+                      </li>
+                    </ul>
+                    <ul class="right__region">
+                      <li>
+                        <a class="region__item" href="" data-id="44"
+                          >Мордовия
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="45"
+                          >Мурманская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="46"
+                          >Ненецкий АО
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="47"
+                          >Нижегородская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="48"
+                          >Новгородская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="49"
+                          >Новосибирская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="50">
+                          Омская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="51">
+                          Оренбургская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="52"
+                          >Орловская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="53"
+                          >Пензенская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="54"
+                          >Пермский край</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="55"
+                          >Приморский край
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="56"
+                          >Псковская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="57"
+                          >Республика Алтай
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="58"
+                          >Ростовская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="59"
+                          >Рязанская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="60">
+                          Самарская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="61"
+                          >Саратовская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="62"
+                          >Сахалинская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="63"
+                          >Саха (Якутия)
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="64"
+                          >Северная Осетия
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="65">
+                          Смоленская область</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="66"
+                          >Ставропольский край
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="67"
+                          >Тамбовская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="68"
+                          >Татарстан
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="69"
+                          >Тверская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="70"
+                          >Томская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="71"
+                          >Тульская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="72"> Тыва</a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="73"
+                          >Тюменская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="74">
+                          Удмуртия</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="75"
+                          >Ульяновская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="76">
+                          Хабаровский край</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="77"
+                          >Хакасия
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="78">
+                          Ханты-Мансийский АО</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="79"
+                          >Челябинская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="80"
+                          >Чеченская республика
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="81">
+                          Чувашия</a
+                        >
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="82"
+                          >Чукотский АО
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="83"
+                          >Ямало-Ненецкий АО
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="84"
+                          >Ярославская область
+                        </a>
+                      </li>
+                      <li>
+                        <a class="region__item" href="" data-id="85">Минск </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <a href="#" class="city-select">Все города</a>
+                <input type="hidden" name="city" required />
+                <div class="city-block">
+                  <div class="city__wrapper">
+                    <ul class="left__city"></ul>
+                    <ul class="right__city"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="agree">
+              <input type="checkbox" class="agree-input" required />
+              <label class="agree-label">
+                Я согласен с
+                <a href="#">пользовательским соглашением </a>
+              </label>
+            </div>
+            <button class="registr-btn">Зарегистрироватся</button>
+            <a href="" class="registr__info">Инструкция регистрации</a>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer-item">
+          <p class="footer-item__title">Зарегистрироваться</p>
+          <ul class="footer-list">
+            <li class="footer-list__link"><a href="#">Забыли пароль?</a></li>
+          </ul>
+        </div>
+        <div class="footer-item">
+          <p class="footer-item__title">О проекте</p>
+          <ul class="footer-list">
+            <li class="footer-list__link">
+              <a href="#">Для кого этот сайт</a>
+            </li>
+            <li class="footer-list__link">
+              <a href="#">Сообщить об ошибке</a>
+            </li>
+            <li class="footer-list__link"><a href="#">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer-item">
+          <p class="footer-item__title">Заказы</p>
+          <ul class="footer-list">
+            <li class="footer-list__link"><a href="#">Разместить заказ</a></li>
+          </ul>
+        </div>
+        <div class="footer-item">
+          <p class="footer-item__title">Сервисы</p>
+          <ul class="footer-list">
+            <li class="footer-list__link"><a href="#">Для заказчиков</a></li>
+            <li class="footer-list__link"><a href="#">Для исполнителей</a></li>
+            <li class="footer-list__link"><a href="#">Способы оплаты</a></li>
+            <li class="footer-list__link"><a href="#">Реклама</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="js/registration.js"></script>
+  </body>
+</html>

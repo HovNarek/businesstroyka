@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\UserPhone;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,9 +51,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'in:Заказчик,Исполнитель'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:6'],
+            'phone' => ['required', 'string'],
+            'gender' => ['required', 'in:Мужчина,Женщина'],
+            'region' => ['required', 'exists:regions,id', 'exists:cities,region_id'],
+            'city' => ['required', 'exists:cities,id'],
+            'checkbox' => ['required'],
         ]);
     }
 
@@ -64,10 +70,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
+            'user_type' => $data['type'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'gender' => $data['gender'],
+            'name' => $data['name'],
+            'city_id' => $data['city'],
         ]);
+
+        UserPhone::create([
+            'user_phone' => $data['phone'],
+            'user_id' => $user->id,
+        ]);
+
+        return $user;
     }
 }

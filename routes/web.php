@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\AdminForgotPasswordController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminResetPasswordController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
+
+Route::get('/get-cities', [GuestController::class, 'getCitiesByRegionId'])->name('getCities');
 
 Route::prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');
