@@ -29,6 +29,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/login/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/login/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
+Route::get('/login/facebook/redirect', [LoginController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('/login/facebook/callback', [LoginController::class, 'handleFacebookCallback']);
+
+Route::get('/login/vk/redirect', [LoginController::class, 'redirectToVk'])->name('login.vk');
+Route::get('/login/vk/callback', [LoginController::class, 'handleVkCallback']);
+
+Route::get('/login/ok/redirect', [LoginController::class, 'redirectToOk'])->name('login.ok');
+Route::get('/login/ok/callback', [LoginController::class, 'handleOkCallback']);
+
+
+
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 

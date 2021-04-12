@@ -45,16 +45,16 @@
             <div class="login-or">
                 <p class="login-or_link">или продолжить через:</p>
                 <div class="login-social">
-                    <a href="#" class="vk">
+                    <a href="{{ route('login.vk') }}" class="vk">
                         <img src="{{ asset('front/login/icons/vk.svg') }}" alt="" />
                     </a>
-                    <a href="#" class="ok">
+                    <a href="{{ route('login.ok') }}" class="ok">
                         <img src="{{ asset('front/login/icons/ok.svg') }}" alt="" />
                     </a>
-                    <a href="#" class="fb">
+                    <a href="{{ route('login.facebook') }}" class="fb">
                         <img src="{{ asset('front/login/icons/fb.svg') }}" alt="" />
                     </a>
-                    <a href="#" class="google">
+                    <a href="{{ route('login.google') }}" class="google">
                         <img src="{{ asset('front/login/icons/google.svg') }}" alt="" />
                     </a>
                 </div>
