@@ -42,6 +42,8 @@ class CreateUsersTable extends Migration
             $table->string('about')->nullable();
             $table->boolean('new_messages')->default(true);
             $table->boolean('new_orders_offers')->default(false);
+            $table->dateTime('last_activity')->nullable();
+            $table->boolean('is_logout')->default(false);
 
 
             $table->rememberToken();
