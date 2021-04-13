@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
+use App\Models\Admin\City;
+use App\Models\Admin\Specialization;
+use App\Models\Admin\Status;
+use App\Models\Admin\UserIp;
+use App\Models\Admin\UserPhone;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -43,4 +48,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function city() {
+        return $this->belongsTo(City::class);
+    }
+
+    public function specialization() {
+        return $this->belongsTo(Specialization::class);
+    }
+
+    public function status() {
+        return $this->belongsTo(Status::class);
+    }
+
+    public function phones() {
+        return $this->hasMany(UserPhone::class);
+    }
+
+    public function ips() {
+        return $this->hasMany(UserIp::class);
+    }
 }

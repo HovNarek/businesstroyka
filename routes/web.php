@@ -9,7 +9,9 @@ use App\Http\Controllers\Auth\AdminResetPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +29,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+
 
 Route::get('/login/google/redirect', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/login/google/callback', [LoginController::class, 'handleGoogleCallback']);

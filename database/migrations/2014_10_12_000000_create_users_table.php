@@ -25,12 +25,39 @@ class CreateUsersTable extends Migration
             $table->string('name')->nullable();
             $table->integer('city_id')->unsigned()->nullable();
             $table->timestamp('email_verified_at')->nullable();
+
+            $table->boolean('blocked')->default(false);
+            $table->string('block_reason')->nullable();
+            $table->string('surname')->nullable();
+            $table->string('midname')->nullable();
+            $table->string('street')->nullable();
+            $table->date('birthday')->nullable();
+            $table->integer('specialization_id')->unsigned()->nullable();
+            $table->integer('status_id')->unsigned()->nullable();
+            $table->string('status_desc')->nullable();
+            $table->string('icq')->nullable();
+            $table->string('skype')->nullable();
+            $table->string('site')->nullable();
+            $table->boolean('show_info')->default(false);
+            $table->string('about')->nullable();
+            $table->boolean('new_messages')->default(true);
+            $table->boolean('new_orders_offers')->default(false);
+
+
             $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('city_id')
                 ->references('id')
                 ->on('cities');
+
+            $table->foreign('specialization_id')
+                ->references('id')
+                ->on('specializations');
+
+            $table->foreign('status_id')
+                ->references('id')
+                ->on('statuses');
         });
     }
 
