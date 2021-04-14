@@ -182,7 +182,12 @@
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Alexander Pierce</a>
-                    <a href="{{ route('admin.logout') }}"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+                    <a href=""
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> Выйти</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
 
@@ -214,6 +219,41 @@
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <p>
+                                Пользователи
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('users.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Список пользователей</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('users.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Добавить пользователя</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('users.moderators') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Список модераторов</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('users.profile') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Профиль</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <p>
                                 Категории
                                 <i class="right fas fa-angle-left"></i>
                             </p>
@@ -221,11 +261,13 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('categories.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
                                     <p>Список категории</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('categories.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
                                     <p>Добавить категорию</p>
                                 </a>
                             </li>
@@ -242,11 +284,13 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('specializations.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
                                     <p>Список специализации</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('specializations.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
                                     <p>Добавить специализацию</p>
                                 </a>
                             </li>

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use App\Models\Admin\City;
+use App\Models\Admin\Role;
 use App\Models\Admin\Specialization;
 use App\Models\Admin\Status;
-use App\Models\Admin\UserIp;
-use App\Models\Admin\UserPhone;
+use App\Models\Admin\Ip;
+use App\Models\Admin\Phone;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,6 +51,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles() {
+        return $this->belongsToMany(Role::class);
+    }
+
     public function city() {
         return $this->belongsTo(City::class);
     }
@@ -63,11 +68,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function phones() {
-        return $this->hasMany(UserPhone::class);
+        return $this->hasMany(Phone::class);
     }
 
     public function ips() {
-        return $this->hasMany(UserIp::class);
+        return $this->hasMany(Ip::class);
     }
 
     public function isOnline() {

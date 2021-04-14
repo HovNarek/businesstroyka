@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserIpsTable extends Migration
+class CreateRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,21 @@ class CreateUserIpsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_ips', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('ip')->nullable();
+            $table->integer('role_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('role_id')
+                ->references('id')
+                ->on('roles')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -34,6 +40,6 @@ class CreateUserIpsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_ips');
+        Schema::dropIfExists('role_user');
     }
 }

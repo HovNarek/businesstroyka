@@ -10,7 +10,7 @@ class Role extends Model
     use HasFactory;
 
     protected $fillable = [
-      'role_name',
+        'role_name',
         'banners_create',
         'banners_edit',
         'banners_view',
@@ -33,5 +33,7 @@ class Role extends Model
         'sitemap_management',
         'pages_view',
         'pages_management',
+        'created_at',
+        'updated_at'
     ];
 }

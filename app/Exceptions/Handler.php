@@ -47,9 +47,9 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        $guard = Arr::get($exception->guards(), 0);
+       $path = $request->path();
 
-        switch ($guard) {
+        switch ($path) {
             case 'admin':
                 $login = 'admin.login';
                 break;

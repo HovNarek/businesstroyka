@@ -8,9 +8,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Cahe;
 
-class LastUserActivity
+class LastUserActivityMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,10 +20,10 @@ class LastUserActivity
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('web')->check()) {
+        if (Auth::check()) {
             $expiresAt = Carbon::now()->addMinutes(2);
-            Cache::put('user-is-online-' . Auth::guard('web')->user()->id, true, $expiresAt);
-            User::where('id', Auth::guard('web')->user()->id)
+            Cache::put('user-is-online-' . Auth::user()->id, true, $expiresAt);
+            User::where('id', Auth::user()->id)
                 ->update(['last_activity' => Carbon::now()->format('Y-m-d H:i:s')]);
         }
         return $next($request);

@@ -9,6 +9,15 @@ class City extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'region_id',
+        'city_name',
+        'city_enabled',
+        'city_main',
+        'created_at',
+        'updated_at'
+    ];
+
     public function region() {
         return $this->belongsTo(Region::class);
     }

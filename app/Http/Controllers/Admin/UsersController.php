@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class UsersController extends Controller
 {
     public function __construct()
     {
@@ -19,7 +19,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.main.index');
+        $users = Admin::getAllUsers();
+        return view('admin.users.index', compact('users'));
     }
 
     /**

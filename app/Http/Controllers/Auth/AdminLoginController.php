@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -9,9 +10,38 @@ use Illuminate\Support\Facades\Auth;
 //
 class AdminLoginController extends Controller
 {
+    use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/admin';
+
+    protected $username;
+
     public function __cunstruct()
     {
-        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest')->except('logout');
+
+        $this->username = $this->findUsername();
+        dd($this->username);
+    }
+
+    public function findUsername() {
+        $login = request()->input('email_or_login');
+
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'login';
+
+        request()->merge([$fieldType => $login]);
+
+        return $fieldType;
+    }
+
+    public function username()
+    {
+        return $this->username;
     }
 
     public function showLoginForm()
@@ -19,24 +49,9 @@ class AdminLoginController extends Controller
         return view('auth.admin-login');
     }
 
-    public function login(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:8'
-        ]);
-
-        $isAdmin = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember);
-        if ($isAdmin) {
-            return redirect()->intended(route('admin.index'));
-        }
-
-        return redirect()->back()->withInput();
-    }
-
     public function logout()
     {
-        Auth::logoutUsingId(1);
+        Auth::logout();
         return redirect('/');
     }
 }

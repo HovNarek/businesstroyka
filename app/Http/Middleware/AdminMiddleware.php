@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserLogout
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,13 +18,13 @@ class UserLogout
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = User::find(Auth::guard('web')->user()->id);
-        if ($user->is_logout) {
-            Auth::guard('web')->logout();
-            $user->is_logout = false;
-            $user->save();
-            return redirect()->route('login');
+        $user = User::whereHas('roles', function($query) {
+            $query->where('roles.id', '>=', 1)->where('roles.id', '<=', 3);
+        })
+            ->find(Auth::user()->id);
+        if ($user) {
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->back();
     }
 }

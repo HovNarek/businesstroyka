@@ -91,5 +91,31 @@ class RoleSeeder extends Seeder
             'pages_view' => false,
             'pages_management' => false,
         ]);
+
+        Role::create([
+            'role_name' => 'Пользователь',
+            'banners_create' => false,
+            'banners_edit' => false,
+            'banners_view' => false,
+            'invoices_view' => false,
+            'invoices_management' => false,
+            'applications_view' => false,
+            'applications_management' => false,
+            'applications_deleting' => false,
+            'users_profile' => false,
+            'users_view' => false,
+            'users_management' => false,
+            'roles_show' => false,
+            'roles_management' => false,
+            'feedbacks_management' => false,
+            'general_settings' => false,
+            'counters' => false,
+            'moderation_new_cities' => false,
+            'regions_view' => false,
+            'sitemap_view' => false,
+            'sitemap_management' => false,
+            'pages_view' => false,
+            'pages_management' => false,
+        ]);
     }
 }

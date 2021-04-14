@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\UserPhone;
+use App\Models\Admin\Phone;
+use App\Models\Admin\RoleUser;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -52,7 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'type' => ['required', 'in:Заказчик,Исполнитель'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'unique:admins'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6'],
             'phone' => ['required', 'string'],
             'gender' => ['required', 'in:Мужчина,Женщина'],
@@ -79,9 +80,14 @@ class RegisterController extends Controller
             'city_id' => $data['city'],
         ]);
 
-        UserPhone::create([
-            'user_phone' => $data['phone'],
+        Phone::create([
+            'phone' => $data['phone'],
             'user_id' => $user->id,
+        ]);
+
+        RoleUser::create([
+            'user_id' => $user->id,
+            'role_id' => 4
         ]);
 
         return $user;

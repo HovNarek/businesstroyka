@@ -1,4 +1,4 @@
-@if (Auth::guard('web')->check())
+@if (Auth::check())
     <p class="text-success">
         You are logged In as a <strong>USER</strong>
     </p>
@@ -8,12 +8,12 @@
     </p>
 @endif
 
-@if (Auth::guard('admin')->check())
-    <p class="text-success">
-        You are logged In as a <strong>ADMIN</strong>
-    </p>
-@else
-    <p class="text-danger">
-        You are logged Out as a <strong>ADMIN</strong>
-    </p>
-@endif
+{{--@if (Auth::guard('admin')->check())--}}
+{{--    <p class="text-success">--}}
+{{--        You are logged In as a <strong>ADMIN</strong>--}}
+{{--    </p>--}}
+{{--@else--}}
+{{--    <p class="text-danger">--}}
+{{--        You are logged Out as a <strong>ADMIN</strong>--}}
+{{--    </p>--}}
+{{--@endif--}}

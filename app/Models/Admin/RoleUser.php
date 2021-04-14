@@ -5,12 +5,16 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AdminEmail extends Model
+class RoleUser extends Model
 {
     use HasFactory;
 
+    protected $table = 'role_user';
+
     protected $fillable = [
-        'admin_email',
-        'admin_id',
+        'user_id',
+        'role_id',
+        'created_at',
+        'updated_at'
     ];
 }
