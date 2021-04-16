@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Ip;
 use App\Models\Admin\Phone;
 use App\Models\Admin\RoleUser;
 use App\Providers\RouteServiceProvider;
@@ -88,6 +89,11 @@ class RegisterController extends Controller
         RoleUser::create([
             'user_id' => $user->id,
             'role_id' => 4
+        ]);
+
+        Ip::create([
+            'user_id' => $user->id,
+            'ip' => request()->ip()
         ]);
 
         return $user;

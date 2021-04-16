@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -24,12 +25,37 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
+        'provider_id',
+        'avatar',
         'user_type',
         'email',
+        'login',
         'password',
         'gender',
         'name',
         'city_id',
+        'email_verified_at',
+        'balance',
+        'balance_spent',
+        'rating',
+        'blocked',
+        'block_reason',
+        'surname',
+        'midname',
+        'street',
+        'birthday',
+        'specialization_id',
+        'status_id',
+        'status_desc',
+        'icq',
+        'skype',
+        'site',
+        'show_info',
+        'about',
+        'new_messages',
+        'new_orders_offers',
+        'last_activity',
+        'is_logout',
     ];
 
     /**
@@ -77,5 +103,53 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isOnline() {
         return Cache::has('user-is-online-' . $this->id);
+    }
+
+    public static function getAllUsers() {
+        $users = User::paginate(20);
+        return $users;
+    }
+
+    public static function resizeAvatar($avatar)
+    {
+        $folder = date('Y-m-d');
+        $w_small = 200;
+        $h_small = 200;
+        $ratio_small = $w_small / $h_small;
+
+        list($w_orig, $h_orig) = getimagesize($avatar);
+        $ratio = $w_orig / $h_orig;
+        $ext = $avatar->extension();
+        $image_name_without_extansion = time();
+        $small_file_without_extansion = "avatar/{$folder}/{$image_name_without_extansion}";
+        $small_file = $small_file_without_extansion .'.webp';
+        Storage::makeDirectory("uploads/avatar/{$folder}");
+
+        if ($ratio_small > $ratio) {
+            $w_small = $h_small * $ratio;
+        } else {
+            $h_small = $w_small / $ratio;
+        }
+
+        $img = "";
+        switch ($ext) {
+            case ("png"):
+                $img = imagecreatefrompng($avatar);
+                break;
+            default:
+                $img = imagecreatefromjpeg($avatar);
+        }
+        $newImgSmall = imagecreatetruecolor($w_small, $h_small);
+        if ($ext == "png") {
+            imagesavealpha($newImgSmall, true);
+            $transPngSmall = imagecolorallocatealpha($newImgSmall, 0, 0, 0, 127);
+            imagefill($newImgSmall, 0, 0, $transPngSmall);
+        }
+        $newImgSmall = imagescale($img, $w_small, $h_small);
+        imagewebp($newImgSmall, public_path('uploads/' . $small_file));
+
+        imagedestroy($newImgSmall);
+//dd($small_file);
+        return $small_file;
     }
 }

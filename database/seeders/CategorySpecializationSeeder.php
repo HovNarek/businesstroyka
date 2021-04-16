@@ -100,8 +100,8 @@ class CategorySpecializationSeeder extends Seeder
             $data [] = [
                 'category_id' => $cat_spec['category_id'],
                 'specialization_id' => $cat_spec['specialization_id'],
-                'created_at' => Carbon::now()->format('Y-m-d h-i-s'),
-                'updated_at' => Carbon::now()->format('Y-m-d h-i-s')
+                'created_at' => Carbon::now()->format('Y-m-d h:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d h:i:s')
 
             ];
         }

@@ -109,8 +109,8 @@ class RegionSeeder extends Seeder
                 'region_name' => $region['title'],
                 'region_enabled' => $region['enabled'],
                 'region_main' => $region['main'],
-                'created_at' => Carbon::now()->format('Y-m-d h-i-s'),
-                'updated_at' => Carbon::now()->format('Y-m-d h-i-s')
+                'created_at' => Carbon::now()->format('Y-m-d h:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d h:i:s')
 
             ];
         }

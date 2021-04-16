@@ -4020,8 +4020,8 @@ class CitySeeder extends Seeder
                 'city_name' => $city['title'],
                 'city_enabled' => $city['enabled'],
                 'city_main' => $city['main'],
-                'created_at' => Carbon::now()->format('Y-m-d h-i-s'),
-                'updated_at' => Carbon::now()->format('Y-m-d h-i-s')
+                'created_at' => Carbon::now()->format('Y-m-d h:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d h:i:s')
 
             ];
         }

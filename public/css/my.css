@@ -12,3 +12,38 @@
 .spec_edit {
     margin-left: 2rem;
 }
+.phone_input, .emails_input, .site_input {
+    display: inline !important;
+    width: 95% !important;
+}
+.info-container, .form-control.filter {
+    display: none !important;
+}
+.avatar_div {
+    position: absolute;
+    right: 40px;
+}
+.delete_image {
+    display: none;
+    position: absolute;
+    top: -15px;
+    right: 5px;
+    color: #131212;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/*.avatar_div:hover .delete_image {*/
+/*    display: block;*/
+/*}*/
+.delete_image:hover, .delete_image:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+.user_avatar {
+    width: 200px;
+}
+
+

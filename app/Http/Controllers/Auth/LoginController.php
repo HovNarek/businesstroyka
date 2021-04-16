@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Ip;
+use App\Models\Admin\RoleUser;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -123,10 +126,21 @@ class LoginController extends Controller
                 $user->email = $data->email;
                 $user->provider_id = $data->id;
                 $user->avatar = $data->avatar;
+                $user->email_verified_at = Carbon::now()->format('Y-m-d h:i:s');
                 $user->save();
+
+                RoleUser::create([
+                    'user_id' => $user->id,
+                    'role_id' => 4
+                ]);
             }
 
             Auth::login($user);
+
+            Ip::create([
+                'user_id' => Auth::user()->id,
+                'ip' => request()->ip()
+            ]);
         }
     }
 }

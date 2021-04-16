@@ -25,7 +25,9 @@ class City extends Model
     public static function getCitiesByRegionID($region_id) {
         $cities = City::whereHas('region', function ($query) use ($region_id) {
             $query->where('regions.id', $region_id);
-        })->get();
+        })
+            ->orderBy('city_name')
+            ->get();
         return $cities;
     }
 }

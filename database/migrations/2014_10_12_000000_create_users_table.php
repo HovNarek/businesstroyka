@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration
             $table->integer('city_id')->unsigned()->nullable();
             $table->timestamp('email_verified_at')->nullable();
 
+            $table->string('balance')->default('0.00');
+            $table->string('balance_spent')->default('0.00');
+            $table->integer('rating')->default(0);
             $table->boolean('blocked')->default(false);
             $table->string('block_reason')->nullable();
             $table->string('surname')->nullable();

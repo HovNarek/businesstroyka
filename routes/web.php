@@ -69,4 +69,6 @@ Route::prefix('admin')->group(function() {
     Route::get('/moderators', [UsersController::class, 'moderators'])->name('users.moderators');
     Route::get('/users/profile', [UsersController::class, 'profile'])->name('users.profile');
 
+//    Route::post('/new-user-avatar-show', [UsersController::class, 'showAvatar'])->name('showAvatar');
+
 });

@@ -31,21 +31,28 @@
                         <div class="card-body">
                             @if (count($users))
                                 <div class="table-responsive" >
-                                    <table class="table table-bordered table-hover text-wrap">
+                                    <table class="table table-bordered table-hover text-nowrap">
                                         <thead>
                                         <tr>
-                                            <th width="10">ID</th>
+                                            <th>ID</th>
                                             <th>Логин</th>
                                             <th>Рейтинг</th>
                                             <th>Баланс</th>
                                             <th>Был</th>
-                                            <th width="150">Действие</th>
+                                            <th>Действие</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <td>
-
-                                            </td>
+                                            @foreach($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->id }}</td>
+                                                    <td>{{ $user->name }}<br>{{ $user->email }}</td>
+                                                    <td>{{ $user->rating }}</td>
+                                                    <td>{{ $user->balance }}</td>
+                                                    <td>{{ $user->last_activity }}</td>
+                                                    <td>Действие</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -59,6 +66,9 @@
 
                 </div>
                 <!-- /.col -->
+                <div class="col-12">
+                    {{ $users->onEachSide(5)->links('vendor.pagination.bootstrap-4') }}
+                </div>
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->

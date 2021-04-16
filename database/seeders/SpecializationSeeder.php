@@ -106,8 +106,8 @@ class SpecializationSeeder extends Seeder
                 'spec_mtitle' => $specialization['mtitle'],
                 'spec_mkeywords' => $specialization['mkeywords'],
                 'spec_mdescription' => $specialization['mdescription'],
-                'created_at' => Carbon::now()->format('Y-m-d h-i-s'),
-                'updated_at' => Carbon::now()->format('Y-m-d h-i-s')
+                'created_at' => Carbon::now()->format('Y-m-d h:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d h:i:s')
             ];
         }
 

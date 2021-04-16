@@ -36,4 +36,9 @@ class Role extends Model
         'created_at',
         'updated_at'
     ];
+
+    public static function getAllRolesWithoutSuperadmin() {
+        $roles = Role::where('id', '>', 1)->get();
+        return $roles;
+    }
 }

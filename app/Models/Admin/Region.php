@@ -22,7 +22,7 @@ class Region extends Model
     }
 
     public static function getAllRegions() {
-        $regions_collection = Region::orderBy('id')->pluck('region_name', 'id');
+        $regions_collection = Region::orderBy('region_name')->pluck('region_name', 'id');
         $regions = $regions_collection->toArray();
         return $regions;
     }
