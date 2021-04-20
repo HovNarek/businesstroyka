@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserSpecializationTable extends Migration
+class CreateSpecializationUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserSpecializationTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_specialization', function (Blueprint $table) {
+        Schema::create('specialization_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('specialization_id')->unsigned();
@@ -36,6 +36,6 @@ class CreateUserSpecializationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_specialization');
+        Schema::dropIfExists('specialization_user');
     }
 }

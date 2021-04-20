@@ -42,6 +42,25 @@
     text-decoration: none;
     cursor: pointer;
 }
+.delete_avatar_image {
+    display: none;
+    position: absolute;
+    top: -15px;
+    right: 5px;
+    color: #131212;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/*.avatar_div:hover .delete_avatar_image {*/
+/*    display: block;*/
+/*}*/
+.delete_avatar_image:hover, .delete_avatar_image:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
 .user_avatar {
     width: 200px;
 }

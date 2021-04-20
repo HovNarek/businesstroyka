@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Admin\City;
+use App\Models\Admin\Email;
 use App\Models\Admin\Role;
 use App\Models\Admin\Specialization;
 use App\Models\Admin\Status;
@@ -38,6 +39,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'balance',
         'balance_spent',
         'rating',
+        'account_type',
+        'expire',
         'blocked',
         'block_reason',
         'surname',
@@ -78,7 +81,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function roles() {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
     public function city() {
@@ -97,8 +100,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Phone::class);
     }
 
+    public function emails() {
+        return $this->hasMany(Email::class);
+    }
+
     public function ips() {
         return $this->hasMany(Ip::class);
+    }
+
+    public function otherSpecializations() {
+        return $this->belongsToMany(Specialization::class);
     }
 
     public function isOnline() {
@@ -151,5 +162,34 @@ class User extends Authenticatable implements MustVerifyEmail
         imagedestroy($newImgSmall);
 //dd($small_file);
         return $small_file;
+    }
+
+    public static function getUserById($id) {
+        $user = User::with([
+            'roles',
+            'city',
+            'specialization',
+            'phones',
+            'emails',
+            'status',
+            'otherSpecializations',
+            'ips' => function($query) {
+                $query->orderBy('updated_at');
+            }
+        ])
+            ->find($id);
+//        dd($user);
+        return $user;
+    }
+
+    public function hasExistOtherSpecById($spec_id) {
+        $other_specs = $this->otherSpecializations;
+        foreach ($other_specs as $other_spec) {
+            if ($other_spec->specialization_id == $spec_id) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

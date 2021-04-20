@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->integer('city_id')->unsigned()->nullable();
             $table->timestamp('email_verified_at')->nullable();
 
+            $table->enum('account_type', ['base', 'master', 'pro'])->default('base');
+            $table->date('expire')->nullable();
             $table->string('balance')->default('0.00');
             $table->string('balance_spent')->default('0.00');
             $table->integer('rating')->default(0);

@@ -15,4 +15,9 @@ class Ip extends Model
         'created_at',
         'updated_at'
     ];
+
+    public static function getIpsByUserId($id) {
+        $ips = Ip::where('user_id', $id)->orderBy('updated_at')->get();
+        return $ips;
+    }
 }

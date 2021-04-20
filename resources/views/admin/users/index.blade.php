@@ -50,7 +50,12 @@
                                                     <td>{{ $user->rating }}</td>
                                                     <td>{{ $user->balance }}</td>
                                                     <td>{{ $user->last_activity }}</td>
-                                                    <td>Действие</td>
+                                                    <td>
+                                                        <a href="{{ route('users.edit', $user->id) }}"
+                                                           class="btn btn-info btn-sm float-left mr-1">
+                                                            <i class="fas fa-pencil-alt"></i>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

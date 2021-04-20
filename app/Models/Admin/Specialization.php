@@ -37,7 +37,7 @@ class Specialization extends Model
     }
 
     public static function getAllSpecs() {
-        $specs = Specialization::with('categories')->get();
+        $specs = Specialization::with('categories')->orderBy('spec_title')->get();
         return $specs;
     }
 

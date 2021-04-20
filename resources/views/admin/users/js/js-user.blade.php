@@ -36,11 +36,18 @@
                     document.querySelector('.avatar_div').removeEventListener('mouseover', showClose);
                     document.querySelector('.avatar_div').removeEventListener('mouseout', hideClose);
                     document.querySelector('.user_avatar').src = "{{ asset('avatar.svg') }}";
+                    document.querySelector('input[name="avatar"]').value = null;
                 });
         });
 
     document.getElementById('region')
         .addEventListener('change', getCitiesByRegionId);
+
+    document.querySelectorAll('.close').forEach(function (item) {
+        item.addEventListener('click', function (e) {
+            this.parentNode.remove();
+        })
+    });
 
     document.querySelector('.phones-add')
         .addEventListener('click', function (e) {
@@ -77,7 +84,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
             `;
             this.insertAdjacentHTML('beforebegin', emails);
 
@@ -100,7 +106,6 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
             `;
             this.insertAdjacentHTML('beforebegin', site);
 

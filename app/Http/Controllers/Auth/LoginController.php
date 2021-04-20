@@ -120,7 +120,8 @@ class LoginController extends Controller
     public function registerOrLoginUser($data) {
         if ($data->email) {
             $user = User::where('email', $data->email)->first();
-            if (!$user) {
+            $user_not_exist = !$user;
+            if ($user_not_exist) {
                 $user = new User();
                 $user->name = $data->name;
                 $user->email = $data->email;
@@ -133,14 +134,31 @@ class LoginController extends Controller
                     'user_id' => $user->id,
                     'role_id' => 4
                 ]);
+
+                Ip::create([
+                    'user_id' => $user->id,
+                    'ip' => request()->ip()
+                ]);
             }
 
             Auth::login($user);
 
-            Ip::create([
-                'user_id' => Auth::user()->id,
-                'ip' => request()->ip()
-            ]);
+            if (!$user_not_exist) {
+                $user_id = Auth::user()->id;
+                $ips = Ip::getIpsByUserId($user_id);
+                if (count($ips) >= 1 && count($ips) <= 2) {
+                    Ip::create([
+                        'user_id' => $user_id,
+                        'ip' => request()->ip()
+                    ]);
+                } elseif (count($ips) === 3) {
+                    Ip::where('user_id', $user_id)
+                        ->where('updated_at', $ips[1]->updated_at)
+                        ->update([
+                            'ip' => request()->ip()
+                        ]);
+                }
+            }
         }
     }
 }

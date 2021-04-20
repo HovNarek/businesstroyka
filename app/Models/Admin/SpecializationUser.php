@@ -5,7 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserSpecialization extends Model
+class SpecializationUser extends Model
 {
     use HasFactory;
 
@@ -16,9 +16,5 @@ class UserSpecialization extends Model
         'updated_at'
     ];
 
-    protected $table = 'user_spacialization';
-
-    public function otherSpecializations() {
-        return $this->hasMany(Specialization::class);
-    }
+    protected $table = 'specialization_use';
 }
